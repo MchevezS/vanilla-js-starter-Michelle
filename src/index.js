@@ -49,3 +49,32 @@ try {
  }   
 }
 
+   // Method post
+async function darDatos () {
+    try {
+        let obtenerTarea = {
+          id: Date.now(),
+          nombre: inputtareas.value,
+          estado: false
+        }
+        const respuesta = await fetch("http://localhost:3000/api/task",{
+            method: "POST",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+              },
+               body: JSON.stringify(obtenerTarea)
+        })
+     console.log(`La tarea ${obtenerTarea.id} fue agregada`);
+     let datos = await respuesta.json()
+     console.log(datos);
+     Datos()
+    } catch (error) {
+        console.error(error);
+    }
+}
+btnAgregarTarea.addEventListener("click",() =>{ 
+    darDatos()
+})
+
+      // Method Put
+      
