@@ -19,4 +19,33 @@ btnAgregarTarea.addEventListener('click', function () {
     validarInput()
 }) 
 
-// lo que agregue en el input se me agregue en  la parte de abajo del input//
+// si agrego algo en el input se me agregue en  la parte de abajo del input//
+function deBajoDelInput(params) {
+    
+}
+
+//Method Get //
+async function Datos() {
+try {
+    const respuesta = await fetch("http://localhost:3000/api/task")
+    const Datos = await respuesta.json()
+      console.log(Datos);
+    Datos.forEach(variable=>{
+        let p = document.createElement("li")
+        p.innerHTML= variable.nombre
+        let div = document.createElement("div")
+        div.innerHTML = variable.nombre
+        let checkbox = document.createElement("checkbox")
+        checkbox.innerHTML = variable.nombre
+        let contenedorDeTareas = document.getElementById("contenedorDeTareas")
+        p.appendChild(checkbox)
+        div.appendChild(p)
+        contenedorDeTareas.appendChild(p)
+        
+
+    })
+} catch (error) {
+    console.error(error);
+ }   
+}
+
