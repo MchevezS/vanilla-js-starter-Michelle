@@ -4,10 +4,16 @@ let inputtareas = document.getElementById("inputtareas")
 
 
 
-// aqui voy a validar el input de donde voy a ingresar el texto o las tareas//
-inputtareas.addEventListener('click', function () {
-    alert('has escrito una tarea')
-})
+// aqui voy a validar el input de donde voy a ingresar el texto cy lo voy a guardar//
+function guardarTareas() {
+    //voy a obtener el valor del input
+    let valorinput = document.getElementById("inputtareas").value;
+    // Aqui lo voy aguardar en la variable  agregarTarea
+    let GuardarTareas  = document.getElementById("btnAgregarTarea").value;
+     GuardarTareas = valorinput;
+    alert('se ha guardado una tarea')
+    console.log("GuardarTareas");
+}
    
 
 
