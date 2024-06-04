@@ -77,4 +77,28 @@ btnAgregarTarea.addEventListener("click",() =>{
 })
 
       // Method Put
-      
+async function modificadorTareas (params) {
+    try {
+    let modificarDatos = {
+        id:Date.now(),
+        nombre:inputtareas.value,
+        estado: false
+    }
+    const respuestaDatos =await fetch("http://localhost:3000/api/task", {
+        method: "PUT",
+        headers:{
+            "Content-type": "application/json; charset=UTF-8"
+        },
+        body: JSON.stringify( modificarDatos)
+    })
+    console.log(`La tarea ${modificarDatos.id} fue agregada...`)
+    let ModificadorDeDatos = await respuestaDatos.json()
+    console.log(ModificadorDeDatos);
+    darDatos()
+    } catch (error) {
+        console.error(error);
+    }
+}
+      btnAgregarTarea.addEventListener("click",()=>{
+        modificadorTareas()
+      })
