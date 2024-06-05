@@ -1,7 +1,7 @@
 // Aqui voy a Insertar todas las variables
 let btnAgregarTarea = document.getElementById("btnAgregarTarea")
 let inputtareas = document.getElementById("inputtareas")
-
+let tareascompletadas = document.getElementById("contador")
 
 
 // aqui voy a validar el input de donde voy a ingresar el texto o las tareas//
@@ -27,6 +27,8 @@ function deBajoDelInput(params) {
 //Method GET 
 async function Datos() {
 try {
+    let contenedorDeTareas = document.getElementById("contenedorDeTareas")
+    console.log("contenedorDeTareas")
     contenedorDeTareas.innerHTML=""
     const respuesta = await fetch("http://localhost:3000/api/task")
     const Datos = await respuesta.json()
@@ -36,25 +38,34 @@ try {
         p.innerHTML= variable.nombre
         let div = document.createElement("div")
         div.innerHTML = variable.nombre
-        let checkbox = document.createElement("input")
+        const checkbox = document.createElement("input")
         checkbox.type = "checkbox"
-        let contenedorDeTareas = document.getElementById("contenedorDeTareas")
         let botonEliminar = document.createElement("button")
         botonEliminar.innerHTML="Eliminar"
-
+        botonEliminar.addEventListener("click",()=>{
+            removedorTarea(variable.id)
+        })  
         div.appendChild(checkbox)
         div.appendChild(p)
         p.appendChild(checkbox)
         p.appendChild(botonEliminar)
         contenedorDeTareas.appendChild(p)
-        
-
+        checkbox.addEventListener("click", () => {
+            if (checkbox.checked==true) {
+                modificadorTareas(variable.id)
+                  contador.value++
+            }else{
+                contador.value--
+            }
+        })
     })
 } catch (error) {
     console.error(error);
  }   
 }
-Datos()
+Datos() 
+// para no tener problemas con el contador lo que tengo que hacer es una funcion, dentro de esa funcion voy a crear un for each y despues voy a recorrer el api para que me salga lo que se marca y lo que se desmarca //
+
 // Method POST
 async function darDatos () {
     try {
@@ -82,6 +93,7 @@ async function darDatos () {
 // Method Put
 async function modificadorTareas (id) {
     try {
+        console.log(id);
     let modificarDatos = {
         estado: true
     }
@@ -95,11 +107,12 @@ async function modificadorTareas (id) {
     console.log(`La tarea ${modificarDatos.id} fue agregada...`)
     let ModificadorDeDatos = await respuestaDatos.json()
     console.log(ModificadorDeDatos);
-    darDatos()
+    //darDatos()
 } catch (error) {
         console.error(error);
     }
 }
+
 // Method Delete
 async function removedorTarea(id) {
     try{
@@ -111,7 +124,9 @@ async function removedorTarea(id) {
 })
     let tarea = await RespuestaRemovedor.json()
     console.log(tarea);
-    modificadorTareas()
+    // modificadorTareas()
+    location.reload()
+    Datos()
    } catch (error) {
        console.error(error);
     } 
@@ -119,3 +134,9 @@ async function removedorTarea(id) {
 btnAgregarTarea.addEventListener("click",()=>{
     darDatos()
 })
+
+ 
+
+
+
+
