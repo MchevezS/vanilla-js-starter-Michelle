@@ -77,14 +77,14 @@ btnAgregarTarea.addEventListener("click",() =>{
 })
 
       // Method Put
-async function modificadorTareas (params) {
+async function modificadorTareas () {
     try {
     let modificarDatos = {
         id:Date.now(),
         nombre:inputtareas.value,
         estado: false
     }
-    const respuestaDatos =await fetch("http://localhost:3000/api/task", {
+    const respuestaDatos = await fetch("http://localhost:3000/api/task", {
         method: "PUT",
         headers:{
             "Content-type": "application/json; charset=UTF-8"
@@ -102,3 +102,30 @@ async function modificadorTareas (params) {
       btnAgregarTarea.addEventListener("click",()=>{
         modificadorTareas()
       })
+
+      // Method Delete
+async function removedorTarea() {
+   try {
+    let RemovedorDeTarea = {
+        id:Date.now(),
+        nombre: inputtareas.value,
+        estado: false
+    }
+    const RespuestaRemovedor = await fetch("http://localhost:3000/api/task", {
+    method: "DELETE",
+    headers:{
+        "Content-type": "application/json; charset=UTF-8"
+    },
+    body: JSON.stringify(RemovedorDeTarea)
+    })
+    console.log(`La tarea ${RemovedorDeTarea.id} fue removida...`)
+    let tarea = await RespuestaRemovedor.json()
+    console.log(tarea);
+    modificadorTareas()
+   } catch (error) {
+    console.error(error);
+   } 
+}
+btnAgregarTarea.addEventListener("click",()=>{
+    removedorTarea()
+  })
