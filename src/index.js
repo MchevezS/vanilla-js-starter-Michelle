@@ -6,17 +6,19 @@ let tareascompletadas = document.getElementById("contador")
 
 // aqui voy a validar el input de donde voy a ingresar el texto o las tareas//
 function validarInput() {
-    let valorInput= document.getElementById("inputtareas").value;
-    if (valorInput == "") {
-       alert('porfavor agrega una tarea')
-       return false;
+    if (inputtareas.value != "") {
+        return true
     }
-    return true;
+    return false;
 } 
 
 //aqui voy a validar el boton de agregar tarea //
 btnAgregarTarea.addEventListener('click', function () {
-    validarInput()
+    if (inputtareas.value!="") {
+        darDatos()
+    }else{
+        alert("ERROR")
+    }
 }) 
 
 
@@ -142,12 +144,5 @@ async function removedorTarea(id) {
          console.error(error);
          } 
          }
-         btnAgregarTarea.addEventListener("click",()=>{
-             darDatos()
-})
+ 
              
-
-
-
-
-
