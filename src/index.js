@@ -19,10 +19,7 @@ btnAgregarTarea.addEventListener('click', function () {
     validarInput()
 }) 
 
-// si agrego algo en el input se me agregue en  la parte de abajo del input//
-function deBajoDelInput(params) {
-    
-}
+
 //------------------------------------------------------------------------------------------------------
 //Method GET 
 async function Datos() {
@@ -33,14 +30,17 @@ try {
     const respuesta = await fetch("http://localhost:3000/api/task")
     const Datos = await respuesta.json()
       console.log(Datos);
-    Datos.forEach(variable=>{
+    
+      Datos.forEach(variable=>{
         let p = document.createElement("p")
         p.innerHTML= variable.nombre
         let div = document.createElement("div")
         div.innerHTML = variable.nombre
+        
         const checkbox = document.createElement("input")
         inputtareas.value = "";
         checkbox.type = "checkbox"
+        
         let botonEliminar = document.createElement("button")
         botonEliminar.innerHTML="Eliminar"
 
@@ -73,7 +73,7 @@ try {
  }   
 }
 Datos() 
-// para no tener problemas con el contador lo que tengo que hacer es una funcion, dentro de esa funcion voy a crear un for each y despues voy a recorrer el api para que me salga lo que se marca y lo que se desmarca //
+
 
 // Method POST
 async function darDatos () {
