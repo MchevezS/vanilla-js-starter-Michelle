@@ -122,4 +122,4 @@ async function removedorTarea(id) {
          console.error(error);
          } 
          }
-export {removedorTarea, modificadorTareas, darDatos, Datos}
+export {Datos, darDatos, modificadorTareas, removedorTarea }
