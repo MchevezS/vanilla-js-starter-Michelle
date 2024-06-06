@@ -1,81 +1,91 @@
 // Aqui voy a Insertar todas las variables
 let btnAgregarTarea = document.getElementById("btnAgregarTarea")
 let inputtareas = document.getElementById("inputtareas")
-
-
-
-// aqui voy a validar el input de donde voy a ingresar el texto cy lo voy a guardar//
-function guardarTareas() {
-    //voy a obtener el valor del input
-    let valorinput = document.getElementById("inputtareas").value;
-    // Aqui lo voy aguardar en la variable  agregarTarea
-    let GuardarTareas  = document.getElementById("btnAgregarTarea").value;
-     GuardarTareas = valorinput;
-    alert('se ha guardado una tarea')
-    console.log("GuardarTareas");
-}
-
-//aqui voy a validar el boton de agregar tarea //
-btnAgregarTarea.addEventListener('click', function () {
-     alert('Le has dado click al btnagregartarea')
-}) 
-
-
-
-
-
+let tareascompletadas = document.getElementById("contador")
+let noTieneTarea = document.querySelector('.noTieneTarea');
 
 // aqui voy a validar el input de donde voy a ingresar el texto o las tareas//
 function validarInput() {
-    let valorInput= document.getElementById("inputtareas").value;
-    if (valorInput == "") {
-       alert('porfavor agrega una tarea')
-       return false;
+    if (inputtareas.value != "") {
+        return true
     }
-    return true;
+    return false;
 } 
 
 //aqui voy a validar el boton de agregar tarea //
 btnAgregarTarea.addEventListener('click', function () {
-    validarInput()
+    if (inputtareas.value!="") {
+        darDatos()
+    }else{
+        alert("ERROR, INGRESE SU TAREA")
+    }
 }) 
 
-// si agrego algo en el input se me agregue en  la parte de abajo del input//
-function deBajoDelInput(params) {
-    
-}
+// click Enter
+inputtareas.addEventListener("keydown",(e)=>{
+    if (e.key=="Enter" && inputtareas.value!="" ) {
+        darDatos()
+    }
+})
+
+
+
 //------------------------------------------------------------------------------------------------------
 //Method GET 
 async function Datos() {
 try {
+    let contenedorDeTareas = document.getElementById("contenedorDeTareas")
+    console.log("contenedorDeTareas")
     contenedorDeTareas.innerHTML=""
     const respuesta = await fetch("http://localhost:3000/api/task")
     const Datos = await respuesta.json()
       console.log(Datos);
-    Datos.forEach(variable=>{
+    
+      Datos.forEach(variable=>{
         let p = document.createElement("p")
         p.innerHTML= variable.nombre
         let div = document.createElement("div")
         div.innerHTML = variable.nombre
-        let checkbox = document.createElement("input")
+        
+        const checkbox = document.createElement("input")
+        inputtareas.value = "";
+        
+        noTieneTarea.style.display = "none";   // desaperece el texto no tienes tareas
         checkbox.type = "checkbox"
-        let contenedorDeTareas = document.getElementById("contenedorDeTareas")
+        
         let botonEliminar = document.createElement("button")
-        botonEliminar.innerHTML="Eliminar"
+        botonEliminar.innerHTML=  " X "
 
+        botonEliminar.addEventListener("click",()=>{
+            removedorTarea(variable.id)
+        })  
+
+        checkbox.checked = variable.estado
+                if(checkbox.checked){
+                    contador.value++
+                }
         div.appendChild(checkbox)
         div.appendChild(p)
         p.appendChild(checkbox)
         p.appendChild(botonEliminar)
         contenedorDeTareas.appendChild(p)
         
-
+        checkbox.addEventListener("click", () => {
+            if (checkbox.checked==true) {
+                modificadorTareas(variable.id)
+                  contador.value++
+            }else{
+                contador.value--
+            }
+        })
+        
     })
 } catch (error) {
     console.error(error);
  }   
 }
-Datos()
+Datos() 
+
 
 // Method POST
 async function darDatos () {
@@ -96,6 +106,7 @@ async function darDatos () {
      let datos = await respuesta.json()
      console.log(datos);
      Datos()
+     location.reload()
     } catch (error) {
         console.error(error);
     }
@@ -104,6 +115,7 @@ async function darDatos () {
 // Method Put
 async function modificadorTareas (id) {
     try {
+        console.log(id);
     let modificarDatos = {
         estado: true
     }
@@ -117,12 +129,13 @@ async function modificadorTareas (id) {
     console.log(`La tarea ${modificarDatos.id} fue agregada...`)
     let ModificadorDeDatos = await respuestaDatos.json()
     console.log(ModificadorDeDatos);
-    darDatos()
+    //darDatos()
 } catch (error) {
         console.error(error);
     }
 }
-// Method Delete
+
+//Method Delete
 async function removedorTarea(id) {
     try{
     const RespuestaRemovedor = await fetch(`http://localhost:3000/api/task/${id}`, {
@@ -133,11 +146,12 @@ async function removedorTarea(id) {
 })
     let tarea = await RespuestaRemovedor.json()
     console.log(tarea);
-    modificadorTareas()
-   } catch (error) {
-       console.error(error);
-    } 
-}
-btnAgregarTarea.addEventListener("click",()=>{
-    darDatos()
-})
+     //modificadorTareas()
+    // location.reload()
+    location.reload()
+    Datos()
+     } catch (error) {
+         console.error(error);
+         } 
+         }
+ 
