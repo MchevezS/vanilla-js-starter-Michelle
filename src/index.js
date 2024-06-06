@@ -2,7 +2,7 @@
 let btnAgregarTarea = document.getElementById("btnAgregarTarea")
 let inputtareas = document.getElementById("inputtareas")
 let tareascompletadas = document.getElementById("contador")
-
+let noTieneTarea = document.querySelector('.noTieneTarea');
 
 // aqui voy a validar el input de donde voy a ingresar el texto o las tareas//
 function validarInput() {
@@ -17,9 +17,17 @@ btnAgregarTarea.addEventListener('click', function () {
     if (inputtareas.value!="") {
         darDatos()
     }else{
-        alert("ERROR")
+        alert("ERROR, INGRESE SU TAREA")
     }
 }) 
+
+// click Enter
+inputtareas.addEventListener("keydown",(e)=>{
+    if (e.key=="Enter" && inputtareas.value!="" ) {
+        darDatos()
+    }
+})
+
 
 
 //------------------------------------------------------------------------------------------------------
@@ -41,10 +49,12 @@ try {
         
         const checkbox = document.createElement("input")
         inputtareas.value = "";
+        
+        noTieneTarea.style.display = "none";   // desaperece el texto no tienes tareas
         checkbox.type = "checkbox"
         
         let botonEliminar = document.createElement("button")
-        botonEliminar.innerHTML="Eliminar"
+        botonEliminar.innerHTML=  " X "
 
         botonEliminar.addEventListener("click",()=>{
             removedorTarea(variable.id)
