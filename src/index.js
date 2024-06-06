@@ -39,17 +39,25 @@ try {
         let div = document.createElement("div")
         div.innerHTML = variable.nombre
         const checkbox = document.createElement("input")
+        inputtareas.value = "";
         checkbox.type = "checkbox"
         let botonEliminar = document.createElement("button")
         botonEliminar.innerHTML="Eliminar"
+
         botonEliminar.addEventListener("click",()=>{
             removedorTarea(variable.id)
         })  
+
+        checkbox.checked = variable.estado
+                if(checkbox.checked){
+                    contador.value++
+                }
         div.appendChild(checkbox)
         div.appendChild(p)
         p.appendChild(checkbox)
         p.appendChild(botonEliminar)
         contenedorDeTareas.appendChild(p)
+        
         checkbox.addEventListener("click", () => {
             if (checkbox.checked==true) {
                 modificadorTareas(variable.id)
@@ -58,6 +66,7 @@ try {
                 contador.value--
             }
         })
+        
     })
 } catch (error) {
     console.error(error);
@@ -85,6 +94,7 @@ async function darDatos () {
      let datos = await respuesta.json()
      console.log(datos);
      Datos()
+     location.reload()
     } catch (error) {
         console.error(error);
     }
@@ -113,7 +123,7 @@ async function modificadorTareas (id) {
     }
 }
 
-// Method Delete
+//Method Delete
 async function removedorTarea(id) {
     try{
     const RespuestaRemovedor = await fetch(`http://localhost:3000/api/task/${id}`, {
@@ -124,18 +134,19 @@ async function removedorTarea(id) {
 })
     let tarea = await RespuestaRemovedor.json()
     console.log(tarea);
-    // modificadorTareas()
+     //modificadorTareas()
+    // location.reload()
     location.reload()
     Datos()
-   } catch (error) {
-       console.error(error);
-    } 
-}
-btnAgregarTarea.addEventListener("click",()=>{
-    darDatos()
+     } catch (error) {
+         console.error(error);
+         } 
+         }
+         btnAgregarTarea.addEventListener("click",()=>{
+             darDatos()
 })
+             
 
- 
 
 
 
