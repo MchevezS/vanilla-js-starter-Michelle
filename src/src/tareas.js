@@ -1,3 +1,5 @@
+let noTieneTarea = document.querySelector('.noTieneTarea');
+
 //------------------------------------------------------------------------------------------------------
 //Method GET 
 async function Datos() {
