@@ -2,23 +2,24 @@
 <html>
 
 <head>
-	<title>proyecto To Do</title>
+	<title>Proyecto To Do</title>
 	<meta charset="UTF-8" />
-	<link rel="stylesheet" href="src/estilos/index.css">
+   <link rel="stylesheet" href="estilos/index.css">
 </head>
 
 <body>
-	
-	
-<h1>TAREAS POR HACER </h1>
-<div input id="inputtareas" type="text" placeholder="Ingresar tareas"></div>
+	<h1>TAREAS POR HACER </h1>
+   <input id="inputtareas" type="text" placeholder="Ingresa tus tareas">
+   <button id="btnAgregarTarea">Agregar Tarea</button>
+   
+   <div id="contenedorDeTareas"></div>
 
-<div>
-<button id="btnAgregarTarea">Agregar Tarea</button>
-</div>
-
-
-<div class="circulo"></div>
+   <input class="contador" id="contador" type="number" value="0">
+   
+   <div class="noTieneTarea">
+      <p>No tienes tareas pendientes</p>
+   </div>
+  
 
 
 
