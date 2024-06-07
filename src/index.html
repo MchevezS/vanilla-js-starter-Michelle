@@ -8,24 +8,26 @@
 </head>
 
 <body>
-<div class="titulo">
-	<h1>TAREAS POR HACER </h1>
+	<h1 class="titulo">TAREAS POR HACER </h1>
+
+<div class="InputTarea">
+   <input id="inputtareas" type="text" placeholder="Ingresa tus tareas">
 </div>
 
-   <input id="inputtareas" type="text" placeholder="Ingresa tus tareas">
-   
-   <button id="btnAgregarTarea">Agregar Tarea</button>
-   <div id="contenedorDeTareas"></div>
+<button class="btnAgregar" id="btnAgregarTarea">Agregar Tarea</button>
+
+ <p  class="tareasCompletadas"> Tareas Completadas</p>
+ <input class="contador" id="contador" type="number" value="0">
+
+<div class="cuadro">
+     <div class="contenedorDeTareas" id="contenedorDeTareas"></div>
+     <div class="noTieneTarea">
+     <p>No tienes tareas pendientes</p>
+     </div>
+</div>
     
    
-   <div class="noTieneTarea">
-      <p>No tienes tareas pendientes</p>
-   </div>
-   
-    <div class="tareascompletadas">  
-      <p> # Tareas Completadas</p>
-   <input class="contador" id="contador" type="number" value="0">
-   </div>
+      
 
 
 	<script src="./index.js" type="module"></script>

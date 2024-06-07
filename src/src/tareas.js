@@ -16,6 +16,7 @@ try {
       Datos.forEach(variable=>{
         let p = document.createElement("p")
         p.innerHTML= variable.nombre
+        p.classList.add("cuadrito")
         let div = document.createElement("div")
         div.innerHTML = variable.nombre
         
@@ -26,6 +27,7 @@ try {
         checkbox.type = "checkbox"
         
         let botonEliminar = document.createElement("button")
+        botonEliminar.classList.add("espacio")
         botonEliminar.innerHTML=  " X "
 
         botonEliminar.addEventListener("click",()=>{

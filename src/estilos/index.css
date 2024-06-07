@@ -1,15 +1,61 @@
-.circulo{
-    display: block;
-    width: 50px;
-    height: 50px;
-    background-color: rgb(169, 213, 249);
+.titulo{
+   margin-left: 350px;
+    margin-top: 130px;
 }
-.circulo{
-    display: block;
-    width: 50px;
-    height: 50px;   
-    border-radius: 50%;
-    border: none;
-    margin-top:10px;
-    margin-left: 700px;
+
+.InputTarea{
+    margin-left: 55px;
+    margin-top: 40px;
+    width: 170px;
+    border-color:  rgb(165, 188, 236);
+}
+
+.btnAgregar{
+    margin-top: 10px;
+    margin-left: 55px;
+    width: 158px;
+    height: 30px;
+    background-color: rgba(8, 44, 246, 0.964);
+    border-color: blue;
+    border-radius: 5px;
+    color: white
+}
+
+.contenedorDeTareas{
+margin-left: 10px;
+
+}
+.tareasCompletadas{
+     margin-left: 900px;
+    margin-top: -85px; 
+    /* border-color: rgb(165, 188, 236); */
+    /*left: 600px */
+}
+
+.contador{ 
+    margin-left: 900px;
+    margin-top: -120px;
+    border-radius: 30px;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+}
+
+.cuadro{
+    margin-top: 30px;
+    min-height: 450px;
+    border: 2px solid  rgb(142, 154, 179);
+    /* rgb(165, 188, 236);*/
+}
+
+.cuadrito{
+    border: 1.5px solid black;
+    padding: 5px;
+    margin: 7.5px;
+   border-color:  rgb(142, 154, 179);
+}
+.espacio{
+    margin-left: 1090px;
+    /* display: flex; */
+    /* left: 200px; */
 }
