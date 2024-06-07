@@ -28,7 +28,7 @@ try {
         
         let botonEliminar = document.createElement("button")
         botonEliminar.classList.add("espacio")
-        botonEliminar.innerHTML=  " X "
+        botonEliminar.innerHTML=  "🗑️"
 
         botonEliminar.addEventListener("click",()=>{
             removedorTarea(variable.id)
