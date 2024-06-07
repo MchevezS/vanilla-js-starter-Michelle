@@ -1,4 +1,6 @@
 let noTieneTarea = document.querySelector('.noTieneTarea');
+let tareascompletadas = document.getElementById("contador")
+
 
 //------------------------------------------------------------------------------------------------------
 //Method GET 
