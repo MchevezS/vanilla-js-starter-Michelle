@@ -3,6 +3,33 @@
     width: 1200px;
     height: 30px;
 }
+.circulo{
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    background-color:rgb(158, 157, 157);
+    margin-top: -19px;
+    margin-left: 10px;
+    align-items: center;
+}
+.circulo1{
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    background-color:rgb(158, 157, 157);
+    margin-top: -19px;
+    margin-left: 12px;
+    align-items: center;
+}
+.circulo2{
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    background-color:rgb(158, 157, 157);
+    margin-top: -10px;
+    margin-left: 24px;
+    align-items: center;
+}
 
 .titulo{
    margin-left: 350px;
