@@ -22,7 +22,7 @@ try {
         
         const checkbox = document.createElement("input")
         inputtareas.value = "";
-        
+        // checkbox.classList.add("check")
         noTieneTarea.style.display = "none";   // desaperece el texto no tienes tareas
         checkbox.type = "checkbox"
         

@@ -1,6 +1,12 @@
+.header{
+    background-color: rgb(178, 177, 177);
+    width: 1200px;
+    height: 30px;
+}
+
 .titulo{
    margin-left: 350px;
-    margin-top: 130px;
+    margin-top: 40px;
 }
 
 .InputTarea{
@@ -53,6 +59,10 @@ margin-left: 10px;
     padding: 5px;
     margin: 8px;
    border-color:  rgb(142, 154, 179);
+}
+.noTieneTarea{
+    text-align: center;
+    margin-top: 240px;
 }
 .espacio{
     margin-left: 1080px;
