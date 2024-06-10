@@ -11,7 +11,7 @@ import {TareasGuardadas} from "./src/buscador";
 
 // aqui voy a validar el input de donde voy a ingresar el texto o las tareas//
 function validarInput() {
-    if (inputtareas.value != "") {
+    if (inputtareas.value != "   ") {
         return true
     }
     return false;

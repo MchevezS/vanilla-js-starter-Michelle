@@ -1,17 +1,17 @@
 let btnbuscar = document.getElementById("btnbuscar")
 let inputGuardadas = document.getElementById("inputGuardadas")
 
-export async function TareasGuardadas(Nombres) {
+async function TareasGuardadas(Nombres) {
     const response = await fetch("http://localhost:3000/api/task");
     const Datos = await response.json();
     
-    let Guardadas = Datos.filter(Tareas => Tareas.Nombres === Nombres);
+    let Guardadas = Datos.filter(Tareas => Tareas.nombre === Nombres);
     if (Guardadas.length === 0) {
       alert("No se ha encontrado la tarea que deseas buscar")
     } else {
         // aqui me va a imprimir las tareas que deseo buscar
       Guardadas.forEach(Guardada => {
-        alert(`Tus tareas han sido encontradas "${ Guardada.Nombres }"`);
+        alert(`Tu tarea han sido encontrada "${ Guardada.Nombres }"`);
       });
     }
 }
@@ -19,4 +19,4 @@ export async function TareasGuardadas(Nombres) {
 btnbuscar.addEventListener("click", () => {
     TareasGuardadas(inputGuardadas.value);
 });
-export { TareasGuardadas }
+export { TareasGuardadas }  
