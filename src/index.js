@@ -19,7 +19,7 @@ function validarInput() {
 
 //aqui voy a validar el boton de agregar tarea //
 btnAgregarTarea.addEventListener('click', function () {
-    if (inputtareas.value!="") {
+    if (inputtareas.value!=" ") {
         darDatos()
     }else{
         alert("ERROR, INGRESE SU TAREA")
