@@ -7,7 +7,7 @@ import { Datos } from "./src/tareas";
 import { darDatos } from "./src/tareas";
 import { modificadorTareas } from "./src/tareas";
 import { removedorTarea } from "./src/tareas";
-
+import {TareasGuardadas} from
 // aqui voy a validar el input de donde voy a ingresar el texto o las tareas//
 function validarInput() {
     if (inputtareas.value != "") {
