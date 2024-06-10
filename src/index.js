@@ -19,7 +19,7 @@ function validarInput() {
 
 //aqui voy a validar el boton de agregar tarea //
 btnAgregarTarea.addEventListener('click', function () {
-    if (inputtareas.value!=" ") {
+    if (inputtareas.value!=" "=== "") {
         darDatos()
     }else{
         alert("ERROR, INGRESE SU TAREA")
@@ -28,8 +28,14 @@ btnAgregarTarea.addEventListener('click', function () {
 
 // click Enter
 inputtareas.addEventListener("keydown",(e)=>{
-    if (e.key=="Enter" && inputtareas.value!="" ) {
-        darDatos()
+
+    if (e.key=="Enter"  ) {
+        if (inputtareas.value.trim()!="") {
+            
+            darDatos()
+        }else{
+            alert("INGRESE SU TAREA")
+        }
     }
 })
 
