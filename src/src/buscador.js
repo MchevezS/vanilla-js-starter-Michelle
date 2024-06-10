@@ -1,7 +1,7 @@
 let btnbuscar = document.getElementById("btnbuscar")
 let inputGuardadas = document.getElementById("inputGuardadas")
 
-async function TareasGuardadas(Nombres) {
+export async function TareasGuardadas(Nombres) {
     const response = await fetch("http://localhost:3000/api/task");
     const Datos = await response.json();
     
@@ -19,4 +19,4 @@ async function TareasGuardadas(Nombres) {
 btnbuscar.addEventListener("click", () => {
     TareasGuardadas(inputGuardadas.value);
 });
-export {TareasGuardadas}
+export { TareasGuardadas }
