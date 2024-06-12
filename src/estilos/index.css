@@ -96,3 +96,8 @@ margin-left: 10px;
     /* display: flex; */
     /* left: 200px; */
 }
+.btnbuscar{
+    background-color: rgba(8, 44, 246, 0.964);
+    border-color: rgba(8, 44, 246, 0.964);
+    border-radius: 5px; 
+}
